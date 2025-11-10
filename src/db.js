@@ -1,0 +1,13 @@
+import pg from 'pg'
+
+export const pool = new pg.Pool({
+    user: "postgres",
+    host: "localhost",
+    password: "Alonso2712",
+    database: "viverocoyoacan",
+    port: "5433"
+})
+
+pool.query('SELECT NOW ()').then(result =>{
+    console.log(result)
+})
