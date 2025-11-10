@@ -1,0 +1,26 @@
+{
+  "name": "proyecto-vivero",
+  "version": "1.0.0",
+  "description": "Creación de software para desarrollo de un proyecto basado en un vivero",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elexdero/Proyecto-Vivero.git"
+  },
+  "keywords": [],
+  "author": "Jesús Alonso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elexdero/Proyecto-Vivero/issues"
+  },
+  "homepage": "https://github.com/elexdero/Proyecto-Vivero#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
