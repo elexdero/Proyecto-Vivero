@@ -1,2 +1,5 @@
 # dependecias que se requieren en servidor
-node_modules/
+node_modules/   
+
+# documento con credenciales de la base de datos
+db.js
