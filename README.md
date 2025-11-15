@@ -4,7 +4,6 @@ de datos del vivero tomando en cuenta los apartados como puede ser un registro d
 productos, las ventas generadas, entre otros aspectos que se pudieron definir.
 </p>
 
-  <br/>
 ## Tecnologías usadas: 
 
   - JavaScript
