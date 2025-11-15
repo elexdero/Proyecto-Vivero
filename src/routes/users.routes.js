@@ -1,44 +1,25 @@
 import { Router } from 'express'
-import { pool } from '../db.js'
-
+import {mostrarTrabajadores, mostrarTrabajadoresById, añadirTrabajadores, borrarTrabjadorById, actualizarTrabajadorById} from '../../controllers/user.controllers.js'
+import { mostrarPlantas, mostrarPlantasById, añadirPlantas} from '../../controllers/plantas.controllers.js'
 const router = Router()
 
-router.get('/trabajadores', async (req, res) =>{
-     const {rows} = await pool.query('SELECT * FROM trabajadores') 
-     console.log(rows)
-     res.json(rows)
-})
+//rutas para los trabajadores
+router.get('/trabajadores', mostrarTrabajadores)
 
-router.get('/trabajadores/:id', async (req, res) =>{
-    const {id}= req.params
-    const {rows} = await pool.query(`SELECT * FROM trabajadores WHERE tabajadorid=$1`, [id]) 
-    if(rows.length === 0){
-        return res.status(404).json({message : "Usuario no encontrado"})
-    }   
-     res.json(rows) 
-})
+router.get('/trabajadores/:id', mostrarTrabajadoresById)
 
-router.post('/trabajadores', async (req, res) =>{
-    const data = req.body
-    console.log(data)
-    const resultado = await pool.query(`INSERT INTO trabajadores(nameTrabajador, apPatTrabajador, apMatTrabajador, direccionTrabajador, telTrabajador, emailTrabajador) VALUES($1, $2, $3, $4, $5, $6)`, [data.nameTrabajador, data.apPatTrabajador, data. apMatTrabajador, data.direccionTrabajador, data.telTrabajador, data.emailTrabajador])
-    res.send("usuario creado")
-    console.log(resultado)
-})
+router.post('/trabajadores', añadirTrabajadores)
 
-router.delete('/trabajadores/:id', async(req, res)=>{
-    const {id}= req.params
-    const {rows} = await pool.query(`DELETE FROM trabajadores WHERE tabajadorid=$1`, [id])
-    if(rows === 0){
-        return res.status(404).json({message: "Error, no se puede borrar un trabajador no existente"})
-    }
-    res.send('Usuario elimininado')
-})
+router.delete('/trabajadores/:id', borrarTrabjadorById)
 
-router.put('/trabajadores/:id', (req, res) =>{
-    const {id} = req.params
-    res.send('Actualización de datos de los trabajadores'+id)
-})
+router.put('/trabajadores/:id', actualizarTrabajadorById)
 
+
+//rutas para las plantas
+router.get('/plantas', mostrarPlantas)
+
+router.get('/plantas/:id', mostrarPlantasById)
+
+router.post('/plantas', añadirPlantas)
 
 export default router
